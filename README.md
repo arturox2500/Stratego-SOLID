@@ -1,59 +1,50 @@
+# Stratego Evolución – Proyecto JavaFX
 
-## Enunciado
+## 📌 Descripción
 
-A continuación se adjunta el ``README.md`` original de este repositorio, tal como se incluye en el [repositorio original](https://github.com/nuttywhal/stratego).
+Este proyecto parte de un **fork del juego Stratego original en JavaFX**, reestructurado completamente bajo principios **SOLID** para mejorar la mantenibilidad y escalabilidad del código.
 
-Para clonar esta versión directamente en su repositorio privado, existen varias alternativas, pero la más sencilla es hacer simplemente lo siguiente (asumiendo que el repositorio destino se llama [https://github.com/Sw-Evolution/25EXX](https://github.com/Sw-Evolution/)):
+**Mantenimiento**  
+   - Modernización del código para que funcione correctamente en entornos actuales de Java (Java 23+ recomendado).  
+   - Refactorización profunda para eliminar "code smells", mejorar la estructura y adoptar patrones de diseño modernos.  
+   - Revisión y simplificación de estructuras de datos y componentes accesorios para optimizar el rendimiento y legibilidad.  
+   - Garantía de que las modificaciones no afectan la funcionalidad ni el comportamiento esperado del juego.
 
-    $ git clone git://github.com/Sw-Evolution/Stratego.git
-    $ cd Stratego
-    $ git remote remove origin
-    $ git remote add origin https://github.com/Sw-Evolution/25EXX.git
-    $ git push -u origin master
+--- 
 
-De modo que se inicia el repositorio privado (no se puede hacer directamente un *fork* del repositorio público) con la versión completa del repositorio original, y poniendo esta misma versión como *commit* inicial, sin "arrastrar" la historia antigua del repositorio original (que sigue estando disponible en éste, por si alguien quisiera consultarla).
+## 📖 Propuesta de evolución
 
-Por supuesto, en la versión final **no** es obligatorio que exista un directorio ``bin`` con la versión compilada del código; más bien, por el contrario, sería preferible que quedase claro cómo se compila el código. (En la versión original se explica aquí mismo, pero es un método que sólo funciona en una shell bash).
+Para esta versión se propuso y desarrolló la siguiente ampliación del juego original:
+
+- **Selección automática de piezas:**  
+  Permite a los jugadores optar por una disposición inteligente automática de sus piezas durante la fase de configuración, agilizando el inicio de la partida.
+
+- **Chat en línea:**  
+  Se integra un sistema de comunicación en tiempo real que facilita el diálogo entre jugadores durante el juego, mejorando la interacción y experiencia.
 
 ---
 
-# <img width="400" alt="stratego" src="https://user-images.githubusercontent.com/26120940/32502146-37fad856-c397-11e7-80e1-a2edf3336774.png" />
+## 🛠️ Requisitos y ejecución
 
-> **Stratego** [/strəˈtiːɡoʊ/](https://en.wikipedia.org/wiki/Help:IPA/English) is a strategy board game for two players on a board of 10×10 squares. Each player controls 40 pieces representing individual officer ranks in an army. The objective of the game is to find and capture the opponent's *Flag*, or to capture so many enemy pieces that the opponent cannot make any further moves. *Stratego* has simple enough rules for young children to play, but a depth of strategy that is also appealing to adults.
+- Requiere Java 23 o superior.
+- Ejecutar el Server.Java para el Set Up del servidor
+- Ejecutar el Client.Java una vez por jugador e introducir el usuario y la direccion IP dada al ejecutar el Server.Java
+- Posicionar las piezas y disfrutar!
 
-[@nuttywhal](https://github.com/nuttywhal) and [@david-henderson](https://github.com/david-henderson) implemented this board game as a final project for SER 215 (Software Enterprise II) in Fall 2014 during our third semester at Arizona State University. It was written as a distributed application using a client–server model. The server awaits socket connections from two different clients and then dispatches a thread to handle a game session between those clients. The server is responsible for information security and enforcing the game rules so that players may not modify the game client in order to cheat.
+## ⚙️ Funcionalidades principales
 
-## Building
+- Juego completo de Stratego con reglas clásicas.
+- Interfaz gráfica moderna usando JavaFX.
+- Selección automática de piezas: el sistema ayuda a colocar las piezas iniciales según estrategias predeterminadas.
+- Chat en línea integrado para comunicación entre jugadores.
+- Código basado en principios SOLID para facilitar el mantenimiento y la extensión.
 
-```bash
-# Clone the GitHub respository and `cd' into it.
-git clone https://github.com/nuttywhal/stratego.git && cd stratego/
+---
 
-# Compile all of the *.java files into *.class files.
-javac -cp src/edu/asu/stratego/**/*.java src/edu/asu/stratego/*.java -d temp/
+## 👥 Colaboradores
 
-# Copy all of the image assets.
-cd src && cp --parents edu/asu/stratego/**/*.png ../temp && cd ..
+- **Arturo Enrique Gutiérrez Mirandona**  
+- **Iván Gutiérrez González**
+- **Jorge Andrés Echevarría**  
+- **Víctor Bartolomé Letosa**
 
-# Create executable JAR files for the client and the server.
-jar cvfm bin/client.jar src/manifest/client.mf -C temp/ .
-jar cvfm bin/server.jar src/manifest/server.mf -C temp/ .
-
-# Clean up.
-rm -r temp/
-```
-
-… at this point in time, we did not know about build automation tools. :sob:
-
-## Running
-
-```bash
-# Executing the client...
-java -jar bin/client.jar &
-
-# Executing the server...
-java -jar bin/server.jar
-```
-## Screenshot
-
-<img src="https://user-images.githubusercontent.com/26120940/32508089-705837d4-c3a6-11e7-9ca7-07c7a59778da.png" alt="stratego" align="middle" />
